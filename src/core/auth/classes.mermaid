@@ -1,0 +1,19 @@
+classDiagram
+    
+    class User {
+        +id: string
+        +username: string
+        +token: string
+    }
+
+    class AuthService {
+        +login(user: User) void
+        +logout() void
+        +isAuthenticated() boolean
+    }
+
+    AuthService --> User
+    AuthService --> ServerAPI
+    AuthService --> DB
+
+

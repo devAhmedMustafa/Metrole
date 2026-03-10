@@ -1,0 +1,32 @@
+classDiagram
+    
+    class Command {
+        <<abstract>>
+        +execute(ArgHolder[]) void
+    }
+
+    class CommandRegistry {
+        -commands: Map<string, Command>
+        +registerCommand(name: string, command: Command) void
+        +executeCommand(name: string) void
+    }
+
+    class ArgHolder {
+        - name: string
+        - value: string
+    }
+
+    class ArgumentParser {
+        + parse(query: string) ArgHolder[]
+    }
+
+    class Parser {
+        +parse(query: string) Command
+    }
+
+
+    CommandRegistry --> Command
+    Command --> ArgHolder
+    ArgumentParser --> ArgHolder
+    Parser --> CommandRegistry
+    Parser --> ArgumentParser
