@@ -2,7 +2,7 @@ classDiagram
     
     class Command {
         <<abstract>>
-        +execute(ArgHolder[]) void
+        +execute(Argument[]) void
     }
 
     class CommandRegistry {
@@ -11,13 +11,13 @@ classDiagram
         +executeCommand(name: string) void
     }
 
-    class ArgHolder {
+    class Argument {
         - name: string
         - value: string
     }
 
     class ArgumentParser {
-        + parse(query: string) ArgHolder[]
+        + parse(query: string) Argument[]
     }
 
     class Parser {
@@ -26,7 +26,7 @@ classDiagram
 
 
     CommandRegistry --> Command
-    Command --> ArgHolder
-    ArgumentParser --> ArgHolder
+    Command --> Argument
+    ArgumentParser --> Argument
     Parser --> CommandRegistry
     Parser --> ArgumentParser
